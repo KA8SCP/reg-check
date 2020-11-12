@@ -1,0 +1,12 @@
+#! /bin/sh
+echo "Content-type: text/html"
+echo
+echo "<HTML><HEAD>"
+echo "<TITLE>DStar-Repeater/Gateway KB1SBJ</TITLE>"
+echo "</HEAD><BODY>"
+echo "<BODY TEXT="#000000" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF" NOSAVE>"
+echo "<PRE>"
+call=$(echo ${QUERY_STRING} | sed -e s,'^callsign=',,)
+/opt/dstar-regcheck/dstar-regcheck.pl "$call"
+echo "</PRE>"
+echo "</BODY></HTML>"
