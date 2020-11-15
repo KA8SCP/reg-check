@@ -310,7 +310,7 @@ if($data[3] != '0.0.0.0' && ($termipdez < $startipdez) || ($termipdez > $endipde
     $num = $sth->execute();
     $ustrust = $sth->rows();
 
-    if($ustrust > 0){
+  if($ustrust > 0 && $callsign eq $regsrv){
 	printf("<br><b>%s %s</b>",$callsign,$t22);
 	$gateway = 1;
     }
