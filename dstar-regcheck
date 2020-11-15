@@ -120,7 +120,7 @@ if($callsign){
     	$t10 = "<BR><font size=+1><b>Mehrfachregistrierung!</b></font>";
     	$t11 = "<BR><font size=+1><b>Terminalanmeldung fehlerhaft!</b></font>";
     	$t12 = "<BR><font size=+1><b>Fehlender Eintrag mit leerer ID / Leerzeichen!</b></font>";
-    	$t13 = "<BR><font size=+1><b>Registrierung bitte beim Registrierungsserver <font size=+2>$regsrv</font> komplettieren!</b></font>";
+    	$t13 = "<BR><font size=+1><b>Registrierung bitte beim Registrierungs server <font size=+2><a href=\"https://REGSRV.dstargateway.org/Dstar.do\">REGSRV</a></font> komplettieren!</b></font>";
 	$t14 = "<BR><font size=+1><b>Mehr Informationen zum <a href=\"https://regist.dstargateway.org/instructions/\">Registrierungsvorgang hier!</a></b></font>";
 	    #TODO Need new translation and links
     	$t15 = "<P><font size=+1 color=red><b>Registrierung NICHT OK!</b></font>";
@@ -146,7 +146,7 @@ if($callsign){
     	$t10 = "<BR><font size=+1><b>Multi Registration!</b></font>";
     	$t11 = "<BR><font size=+1><b>Wrong Terminal registration!</b></font>";
     	$t12 = "<BR><font size=+1><b>Missing Eintry with Space-ID!</b></font>";
-    	$t13 = "<BR><font size=+1><b>Please complete registration at Registrationserver <font size=+2>$regsrv</font> !</b></font>";
+    	$t13 = "<BR><font size=+1><b>Please complete registration at Registration server <font size=+2><a href=\"https://REGSRV.dstargateway.org/Dstar.do\">REGSRV</a></font> !</b></font>";
 	$t14 = "<BR><font size=+1><b>More informationen on the <a href=\"https://regist.dstargateway.org/instructions/\">registration process!</a></b></font>";
 	$t15 = "<p><font size=+1 color=red><b>Please verify this registration at <a href=\"http://dstar.info/query.html\" target=\"_blank\">Trust Server Database Direct Inquiry</a> or at <a href=\"https://regist.dstargateway.org/regcheck/index.php\" target=\"_blank\">REGIST Registration Validation</a></b></font>";
     	$t16 = "<P><font size=+1 color=red><b>Registration NOT OK!<br>(IP outside of assigned pool!)</b></font>";
@@ -340,6 +340,8 @@ if($callsign){
 	    if($gateway == 0){
     		print"$t12";
     		$err = 1;
+				$regsrv =~ s/\s+$//;
+				$t13 =~ s/REGSRV/$regsrv/g;
     		print"$t13";
     		if(index($regsrv,$owncall) == 0){
 		    print"$t14";
