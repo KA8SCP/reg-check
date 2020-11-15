@@ -23,6 +23,7 @@ use CGI;
 
 $| = 1;		# flush print and write
 $rev = "2017/03/16";
+$owncall = "GW-CALL";
 
 if(substr($ENV{'HTTP_ACCEPT_LANGUAGE'}, 0, 2) eq "de"){
     $language = "DE";
@@ -44,7 +45,7 @@ print("   <meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-885
 print("   <meta name=\"Author\" content=\"Hans-Juergen Barthen, DL5DI\">");
 print("   <meta name=\"GENERATOR\" content=\"dstar-regcheck.pl DL5DI 12/2009\">");
 print("   <META HTTP-EQUIV=\"Pragma\" CONTENT=\"no-cache\">");
-print("   <title>DStar-Repeater/Gateway - KB1SBJ<br>Registration-Check</title>");
+print("   <title>DStar-Repeater/Gateway - $owncall<br>Registration-Check</title>");
 print("</head>");
 print("<body>");
 
@@ -54,27 +55,18 @@ print("<td>");
 
 print("<table CELLPADDING=5>");
 print("<tr>");
-print("<td><img SRC=\"/USA.jpg\" BORDER=0 height=30 width=50></td>");
+print("<td><a href=\"/\"><img SRC=\"/img/d-star-logo.gif\" BORDER=0 height=60 width=120></a></td>");
 print"$t00";
-print("<td><a href=\"http://www.ircddb.net\"><img SRC=\"/dstar_logo.jpg\" BORDER=0 height=60 width=120></a></td>");
+
 print("</tr>");
 print("</table>");
 
-#print "$client_language<p>";
-
-# This is a local banner. Print it only if called on our own website:
-$ref = $ENV{'HTTP_REFERER'};
-#if(index($ref,"prgm.org") > 0){
-#    print("<center><b><i><font color=red size=+3>Wir linken <a href=\"http://dstar.prgm.org/dstar-dplus.html\">DPlus</a> und <a href=\"http://dstar.prgm.org/dstar-dextra.html\">DExtra</a>!</font></i></b></center>");
-#}
-#----- Request callsign ------
 
 print("<p>&nbsp");
 print"$t01";
 print("<hr>");
 print("&nbsp<br>");
 
-$owncall = "KB1SBJ";
 $callsign = CGI::param('callsign');
 
 if($callsign){
@@ -122,20 +114,21 @@ if($callsign){
 	$t4 = "<br><font size=+1><center><b>Folgender Registrierungs-Eintrag wurde gel&ouml;scht:</b></center></font><br>";
 	$t5 = "<tr><td><center>Call/ID</center></td><td><center>Registrierungsserver</center></td><td><center>L&ouml;schdatum</center></td></tr>";
 	$t6 = "<p><br><font size=+1><center><b>Dieser Eintrag wurde lokal von ircDDB generiert</center></font>";
-	$t7 = "<p><br><font size=+1><center><b>F&auml;lschlicherweise noch aktivierte <a href=\"http://dstar.prgm.org/DStarTerminalIDs.html\" >Terminal-IDs:</a></b></center></font>";
-	$t8 = "<p><br><font size=+1><center><b>Aktivierte <a href=\"http://dstar.prgm.org/DStarTerminalIDs.html\" >Terminal-IDs:</a></b></center></font>";
+	$t7 = "<p><br><font size=+1><center><b>F&auml;lschlicherweise noch aktivierte <a href=\"/DStarTerminalIDs.html\" >Terminal-IDs:</a></b></center></font>";
+	$t8 = "<p><br><font size=+1><center><b>Aktivierte <a href=\"/DStarTerminalIDs.html\" >Terminal-IDs:</a></b></center></font>";
 	$t9 = "<tr><td><center>Device Call/ID</center></td><td><center>Registrierungsserver</center></td><td><center>IP-Adresse</center></td><td><center>Letztmals geh&ouml;rt</center></td><td><center> Repeater </center></td><td><center> Gateway </center></td></tr>";
     	$t10 = "<BR><font size=+1><b>Mehrfachregistrierung!</b></font>";
     	$t11 = "<BR><font size=+1><b>Terminalanmeldung fehlerhaft!</b></font>";
     	$t12 = "<BR><font size=+1><b>Fehlender Eintrag mit leerer ID / Leerzeichen!</b></font>";
     	$t13 = "<BR><font size=+1><b>Registrierung bitte beim Registrierungsserver <font size=+2>$regsrv</font> komplettieren!</b></font>";
-	$t14 = "<BR><font size=+1><b>Mehr Informationen zum <a href=\"http://dstar.prgm.org/DStar-Registrierung.htm\">Registrierungsvorgang hier!</a></b></font>";
+	$t14 = "<BR><font size=+1><b>Mehr Informationen zum <a href=\"https://regist.dstargateway.org/instructions/\">Registrierungsvorgang hier!</a></b></font>";
+	    #TODO Need new translation and links
     	$t15 = "<P><font size=+1 color=red><b>Registrierung NICHT OK!</b></font>";
     	$t16 = "<P><font size=+1 color=red><b>Registrierung NICHT OK!<br>(IP ausserhalb des zugewiesenen Adress-Pools)</b></font>";
     	$t17 = "<P><font size=+1><b>Registrierung OK!</b></font>";
     	$t18 = "<P><font size=+1><b>Terminalanmeldung OK f&uuml;r ircDDB-Netzwerk!</b></font>";
     	$t19 = "<center><br><font size=+1><b>Existierende Terminals m&uuml;ssen vom Admin des neuen<br>Registrierungs-Servers gel&ouml;scht werden.<br>Bitte nach dem ersten Registrierungsschritt bei ihm melden!</b></font><p>";
-	$t20 = "<BR><center><font size=+1><a href=\"http://dstar.prgm.org/dstar-reg.htm\" target =\"_blank\" > Registrierung z.B. hier bei KB1SBJ </a></font><BR><center><font size=+1><a href=\"https://db0hrf.ham-radio-op.net/Dstar.do\" target =\"_blank\" > oder bei DB0HRF m&ouml;glich</a></font><BR>";
+	$t20 = "<BR><center><font size=+1><a href=\"https://regist.dstargateway.org/instructions/\" target =\"_blank\" > Registrierung z.B. hier bei $owncall </a></font><BR>";
 	$t21 = "<center><i>$cnt Abrufe seit 20090817</font></i><br>";	# Abrufe seit Installationsdatum - einfuegen !!
 	$t22 = " ist ein registriertes <a href=\"http://www.dstarusers.org/repeaters.php\" target=\"_blank\">US-Trust-Gateway</a>";
 	$t23 = " ist ein registriertes <a href=\"http://status.ircddb.net/cgi-bin/ircddb-gwst\" target=\"_blank\">ircDDB-Gateway</a>";
@@ -147,20 +140,20 @@ if($callsign){
 	$t4 = "<br><font size=+1><center><b>The following Registration-Record had been erased:</b></center></font><br>";
 	$t5 = "<tr><td><center>Call/ID</center></td><td><center>Registration Server</center></td><td><center>Date of erase</center></td></tr>";
 	$t6 = "<p><br><font size=+1><center><b>This entry was created locally by ircDDB</center></font>";
-	$t7 = "<p><br><font size=+1><center><b>Orphan <a href=\"http://dstar.prgm.org/DStarTerminalIDs.html\" >Terminal-IDs:</a></b></center></font>";
-	$t8 = "<p><br><font size=+1><center><b>Activated <a href=\"http://dstar.prgm.org/DStarTerminalIDs.html\" >Terminal-IDs:</a></b></center></font>";
+	$t7 = "<p><br><font size=+1><center><b>Orphan <a href=\"/DStarTerminalIDs.html\" >Terminal-IDs:</a></b></center></font>";
+	$t8 = "<p><br><font size=+1><center><b>Activated <a href=\"/DStarTerminalIDs.html\" >Terminal-IDs:</a></b></center></font>";
 	$t9 = "<tr><td><center>Device Call/ID</center></td><td><center>Registration Server</center></td><td><center>IP-Address</center></td><td><center>Last Heard</center></td><td><center> Repeater </center></td><td><center> Gateway </center></td></tr>";
     	$t10 = "<BR><font size=+1><b>Multi Registration!</b></font>";
     	$t11 = "<BR><font size=+1><b>Wrong Terminal registration!</b></font>";
     	$t12 = "<BR><font size=+1><b>Missing Eintry with Space-ID!</b></font>";
     	$t13 = "<BR><font size=+1><b>Please complete registration at Registrationserver <font size=+2>$regsrv</font> !</b></font>";
-	$t14 = "<BR><font size=+1><b>More informationen on the <a href=\"http://dstar.prgm.org/DStar-Registrierung.htm\">registration process!</a></b></font>";
-    	$t15 = "<P><font size=+1 color=red><b>Registration NOT OK!</b></font>";
+	$t14 = "<BR><font size=+1><b>More informationen on the <a href=\"https://regist.dstargateway.org/instructions/\">registration process!</a></b></font>";
+	$t15 = "<p><font size=+1 color=red><b>Please verify this registration at <a href=\"http://dstar.info/query.html\" target=\"_blank\">Trust Server Database Direct Inquiry</a> or at <a href=\"https://regist.dstargateway.org/regcheck/index.php\" target=\"_blank\">REGIST Registration Validation</a></b></font>";
     	$t16 = "<P><font size=+1 color=red><b>Registration NOT OK!<br>(IP outside of assigned pool!)</b></font>";
     	$t17 = "<P><font size=+1><b>Registration OK!</b></font>";
     	$t18 = "<P><font size=+1><b>Registration OK for ircDDB-Network!</b></font>";
 	$t19 = "<center><br><font size=+1><b>Existing Terminals have to be deleted by the Admin of the <br>new Registration-Servers.<br>Please contact him after the first step of the Registration process!</b></font><p>";
-	$t20 = "<BR><center><font size=+1><a href=\"http://dstar.prgm.org/dstar-reg.htm\" target =\"_blank\" > Registration is possible at $owncall </a></font>";
+	$t20 = "<BR><center><font size=+1><a href=\"https://regist.dstargateway.org/instructions/\" target =\"_blank\" > Registration is possible at $owncall </a></font>";
 	$t21 = "<center><i>$cnt hits since 20100917</font></i><br>";  # hits since installation - enter installation date here !
 	$t22 = " is a registered <a href=\"http://www.dstarusers.org/repeaters.php\" target=\"_blank\">US-trust gateway</a>";
 	$t23 = " is a registered <a href=\"http://status.ircddb.net/cgi-bin/ircddb-gwst\" target=\"_blank\">ircDDB gateway</a>";
