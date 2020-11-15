@@ -92,7 +92,7 @@ if($callsign){
 
 
 # read and increase hit counter
-    if (open(CNTFILE, "/var/local/httpd/cgi-bin/dstar-regcheck.cnt")) {
+    if (open(CNTFILE, "/tmp/dstar-regcheck.cnt")) {
 	$cnt = <CNTFILE>;
         close(CNTFILE);
 	chop($cnt);
@@ -102,7 +102,7 @@ if($callsign){
     }    
 
 # write counter back to file
-    if (open(CNTFILE, ">/var/local/httpd/cgi-bin/dstar-regcheck.cnt")) {
+    if (open(CNTFILE, ">/tmp/dstar-regcheck.cnt")) {
 	printf(CNTFILE "$cnt\n");
 	close(CNTFILE);
     }
@@ -377,7 +377,7 @@ if($data[3] ne '0.0.0.0' && ($termipdez < $startipdez) || ($termipdez > $endipde
 #print "<br>US-Trust:$ustrust<br>ircDDB:$ircddb<br>";
 
     print("<BR>&nbsp<br>");
-#    print"$t21";
+    print"$t21";
     print "<center>Status: $Timestamp UTC<br>";
     print "<center>Software-Rev.: $rev (dl5di)<br>";
 #    print "Referer: $ref";
