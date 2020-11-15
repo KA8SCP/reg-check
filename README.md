@@ -18,7 +18,12 @@ sed -i 's/GW-CALL/N0CALL/g' /var/www/html/cgi-bin
 4. Get some other html documentation that helps users
 ```sh
 cd /var/www/html
-wget https://w9dua.dstargateway.org/DStarTerminalIDs.html
+wget https://wb1gof.dstargateway.org/DStarTerminalIDs.html
 ```
+
+# Examples
+[WB1GOF](https://wb1gof.dstargateway.org/cgi-bin/dstar-regcheck)
+[W9DUA](https://w9dua.dstargateway.org/cgi-bin/dstar-regcheck)
+
 # History
 This program is Copyright (c) 2008-2012 Hans-J. Barthen - DL5DI dl5di@darc.de
