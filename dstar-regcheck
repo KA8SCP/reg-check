@@ -270,7 +270,7 @@ if($callsign){
         print("<tr>");
         printf("<td ALIGN LEFT>%8s</td>",$data[0]); # Terminal-Call
         printf("<td ALIGN=CENTER>%15s</td>",$data[2]); # RegServ
-if($data[3] != '0.0.0.0' && ($termipdez < $startipdez) || ($termipdez > $endipdez)) {
+if($data[3] ne '0.0.0.0' && ($termipdez < $startipdez) || ($termipdez > $endipdez)) {
 	    printf("<td ALIGN=CENTER>%15s</td>",$data[3]); # IP-address
 	    $iperr++;
 	} else {
