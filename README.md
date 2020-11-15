@@ -20,3 +20,5 @@ sed -i 's/GW-CALL/N0CALL/g' /var/www/html/cgi-bin
 cd /var/www/html
 wget https://w9dua.dstargateway.org/DStarTerminalIDs.html
 ```
+# History
+This program is Copyright (c) 2008-2012 Hans-J. Barthen - DL5DI dl5di@darc.de
