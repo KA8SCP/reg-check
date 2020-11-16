@@ -309,8 +309,7 @@ if($data[3] ne '0.0.0.0' && ($termipdez < $startipdez) || ($termipdez > $endipde
     $sth = $dbh->prepare($sql);
     $num = $sth->execute();
     $ustrust = $sth->rows();
-
-  if($ustrust > 0 && $callsign eq $regsrv){
+  if($ustrust > 0 && $regsrv =~ m/$callsign/){
 	printf("<br><b>%s %s</b>",$callsign,$t22);
 	$gateway = 1;
     }
@@ -340,8 +339,9 @@ if($data[3] ne '0.0.0.0' && ($termipdez < $startipdez) || ($termipdez > $endipde
 	    if($gateway == 0){
     		print"$t12";
     		$err = 1;
-				$regsrv =~ s/\s+$//;
-				$t13 =~ s/REGSRV/$regsrv/g;
+                $regsrvA=$regsrv;
+                $regsrvA =~ s/\s+$//;
+		$t13 =~ s/REGSRV/$regsrvA/g;
     		print"$t13";
     		if(index($regsrv,$owncall) == 0){
 		    print"$t14";
