@@ -8,12 +8,12 @@ Perl database connectors required for PostgresSQL
 
 1. Get required files
 ```sh
-yum install perl-libwww-perl perl-DBD-Pg perl-CGI
+yum install perl-libwww-perl perl-DBD-Pg perl-CGI perl-LWP-Protocol-https
 ```
 2. Install dstar-regcheck to /var/www/html/cgi-bin from this repo
 3. Change "GW-CALL" to own gateway callsign
 ```sh
-sed -i 's/GW-CALL/N0CALL/g' /var/www/html/cgi-bin
+sed -i 's/GW-CALL/N0CALL/g' /var/www/cgi-bin/dstar-regcheck
 ```
 4. Get some other html documentation that helps users
 ```sh
