@@ -316,7 +316,7 @@ if($data[3] ne '0.0.0.0' && ($termipdez < $startipdez) || ($termipdez > $endipde
 
 #----- check at ircddb.net if it is a registered ircDDB gateway -------
 
-    $url = "http://status.ircddb.net/isgw.php?call=$callsign";
+    $url = "https://status.ircddb.net/isgw.php?call=$callsign";
     $ircddb = get($url);
 
     if($ircddb > 0){
