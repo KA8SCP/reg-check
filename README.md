@@ -1,10 +1,29 @@
 # reg-check
 Perl-Module LWP::simple: required
+Perl-Module CGI required to make script stand alone
 Perl database connectors required for PostgresSQL
 
-yum install perl-libwww-perl
-yum install perl-DBD-Pg
-(included: yum install perl-DBI)
 
-- change IP address from "10.0.0.2" to "127.0.0.1"
-- change "DB0MYK" to own gateway callsign
+# Install
+
+1. Get required files
+```sh
+yum install perl-libwww-perl perl-DBD-Pg perl-CGI perl-LWP-Protocol-https
+```
+2. Install dstar-regcheck to /var/www/html/cgi-bin from this repo
+3. Change "GW-CALL" to own gateway callsign
+```sh
+sed -i 's/GW-CALL/N0CALL/g' /var/www/cgi-bin/dstar-regcheck
+```
+4. Get some other html documentation that helps users
+```sh
+cd /var/www/html
+wget https://wb1gof.dstargateway.org/DStarTerminalIDs.html
+```
+
+# Examples
+[WB1GOF](https://wb1gof.dstargateway.org/cgi-bin/dstar-regcheck)
+[W9DUA](https://w9dua.dstargateway.org/cgi-bin/dstar-regcheck)
+
+# History
+This program is Copyright (c) 2008-2012 Hans-J. Barthen - DL5DI dl5di@darc.de
